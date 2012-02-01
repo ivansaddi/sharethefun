@@ -1,0 +1,139 @@
+<!doctype html> <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+	<!--<![endif]-->
+	<head id="funfunfun" data-template-set="html5-reset">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Making it easier to share the fun.</title>
+		<meta name="title" content="">
+		<meta name="description" content="Making it easier to share why
+		it is more fun in the Philippines!">
+		<meta name="author" content="Andro Juni">
+		<meta name="Copyright" content="Copyright Andro Juni 2011. All Rights Reserved.">
+		<!--Facebook-->
+		<meta property="og:title" content="ShareTheFun" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Making it easier to share why
+		it is more fun in the Philippines!" />
+		<meta property="og:image" content="http://sharethefun.androjuni.com/thumb.png" />
+		<meta property="og:url" content="http://sharethefun.androjuni.com/" />
+		<meta property="og:site_name" content="ShareTheFun" />
+		<meta property="fb:admins" content="1034297000" />
+		<link rel="stylesheet" href="_/css/custom.css">
+		<script src="_/js/modernizr-1.7.min.js"></script>
+		<script src="_/js/kinetic-v3.5.2.min.js"></script>
+		<link rel="shortcut icon"  href="favicon.ico">
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-28524684-1']);
+			_gaq.push(['_trackPageview']); (function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+	</head>
+	<body id="sfbody">
+		<div id="fb-root"></div>
+		<div id="main-wrapper">
+			<div id="title">
+				Share the Fun
+			</div>
+			<div id="cpanel">
+				<div id="cpanelinnerwrap">
+					<span class="fileinput-wrap">
+						<input type="file" name="photo" id="photo" onchange="handleFiles(this.files)"/>
+						<button type="button" id="fakephoto" class="button red">
+							Choose a Photo
+						</button></span>
+					<input type="text" id="message" size="25">
+					<button type="button" id="addtext" class="button">
+						Add Text
+					</button>
+					<button type="button" class="button" id="export">
+						Export
+					</button>
+					<button type="button" class="button share fb" id="facebook">
+						Post on Facebook
+					</button>
+					<span class="cpanelrightalign">
+						<button type="button" class="button" id="help">
+							Help
+						</button>
+						<button type="button" class="button" id="about">
+							About
+						</button> </span>
+					<!-- <button type="button" class="button" id="export" onclick="clearBoundingBox()">
+					Clear bounding box
+					</button> -->
+					<span style="font-family: Harabara; position:absolute; top:-500px;">.</span><!-- para magload yung font before drawing sa canvas -->
+				</div>
+			</div>
+			<div id="cpaneloptions">
+				<label id="fontsizelabel" style="display:none">Font Size: </label>
+				<input type="number" id="fontsize" value ="50" min="1" max="200" style="display:none">
+				<span style="display:inline-block; width:18px"></span>
+				<button type="button" class="button small" id="removetext" style="display:none">
+					Remove Text
+				</button>
+			</div>
+			<div class="fb-like" data-href="http://sharethefun.androjuni.com/" data-layout="button_count" data-send="false" data-width="450" data-show-faces="false"></div>
+			<div id="instructions">
+				Click 'Choose a Photo' or drag one here to get started.
+			</div>
+			
+			<div id="holder"></div>
+			<div id="modal">
+				<div class="top">
+					<span class="linkish close"><b>X</b>
+				</div>
+				<div class="content">
+					<dl class="modalhelp">
+						<dt>
+							Browser support
+						</dt>
+						<dd>
+							ShareTheFun is supported by <a href="http://www.mozilla.org/en-US/firefox/" target="_blank">Firefox</a>, <a href="http://www.mozilla.org/en-US/firefox/" target="_blank">Chrome</a>, and <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home" target="_blank">IE9+</a>.
+							Not working properly? Try upgrading your browser.
+						</dd>
+					</dl>
+					<dl class="modalabout">
+						<dt>
+							Making it easier to share the fun.
+						</dt>
+						<dd>
+							No need to learn Photoshop to make your <a href="http://itsmorefuninthephilippines.com/" target="_blank">More Fun in the Philippines</a> meme!
+							<br/>
+							<br/>
+							Designed and developed by <a href="mailto:androjuni@gmail.com?Subject=Share%20The%20Fun">Andro Juni</a> and <a href="mailto:ivan.saddi@yahoo.com?Subject=Share%20The%20Fun">Ivan Saddi</a>. <a href="http://www.kineticjs.com/">KineticJS</a> made dragging text around happen.
+							<br/>
+							<br/>
+							<div style="text-align:center"><img src="_/css/HTML5_Badge_32.png"/>
+							</div>
+						</dd>
+					</dl>
+					<dl class="modalimage">
+						<div style="text-align:center"><img id="preview_image" /></div>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div id="modal-screenblock"></div>
+		</div> <!-- here comes the javascript -->
+		<script src="_/js/facebook.js"></script>
+		<!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write("<script src='_/js/jquery-1.5.1.min.js'>\x3C/script>")</script>
+		<!-- this is where we put our custom functions -->
+		<script src="_/js/functions.js"></script>
+		<script src="_/js/dragtext.js"></script>
+	</body>
+</html>
